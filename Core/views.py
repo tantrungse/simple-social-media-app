@@ -60,3 +60,19 @@ def signin(request):
 def logout(request):
     auth.logout(request)
     return redirect('signin')
+
+def settings(request):
+    user_profile = Profile.objects.get(user=request.user)
+    if request.method == 'POST':
+        if request.FILES.get('image') == None:
+            image = user_profile.profileimg
+        else:
+            image = request.FILES.get('image')
+        bio = request.POST['bio']
+        location = request.POST['location']
+        
+        user_profile.profileimg = image
+        user_profile.bio = bio
+        user_profile.location = location
+        user_profile.save()
+    return render(request, 'setting.html', {'user_profile': user_profile})
