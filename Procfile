@@ -1,1 +1,1 @@
-web: python manage.py migrate && python manage.py collectstatic --no-input && gunicorn main:SocialBook.wsgi
+web: gunicorn 'SocialBook.wsgi'
