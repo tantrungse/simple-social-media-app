@@ -23,6 +23,5 @@
         "src": "/(.*)",
         "dest": "SocialBook/wsgi.py"
       }
-    ],
-    "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+    ]
   }
